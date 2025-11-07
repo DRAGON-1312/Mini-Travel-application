@@ -1,0 +1,38 @@
+# Use Ollama
+"LLM_BACKEND" = "ollama"
+"OLLAMA_BASE" = "https://taunya-hexahydrated-hezekiah.ngrok-free.dev"  # để trống nếu dùng localhost
+"OLLAMA_HOST" = ""
+
+# Hoặc dùng OpenAI
+# LLM_BACKEND = "openai"
+# OPENAI_API_KEY = ""
+# OPENAI_MODEL = "gpt-4o-mini"
+# OPENAI_BASE = ""  # để trống nếu xài api.openai.com
+
+# Hoặc dùng Gemini
+# LLM_BACKEND = "gemini"
+# GOOGLE_API_KEY = ""
+# GEMINI_MODEL = "gemini-1.5-flash"
+
+[firebase_client]
+"apiKey"= "AIzaSyDwMzbNhFQVGJMzt4mDo7kZbdFNoC32dr4"
+"authDomain"= "dragon-lab-ct.firebaseapp.com"
+"databaseURL"= "https://dragon-lab-ct-default-rtdb.asia-southeast1.firebasedatabase.app"
+"projectId"= "dragon-lab-ct"
+"storageBucket"= "dragon-lab-ct.firebasestorage.app"
+"messagingSenderId"= "233105892491"
+"appId"= "1:233105892491:web:2c73e1f352e634ea2a608e"
+"measurementId"= "G-Q5MYRM6VYL"
+
+[firebase_admin]
+"type"="service_account"
+"project_id"= "dragon-lab-ct"
+"private_key_id"= "bc96f77437b531b8e78549a95da175b2164c6862"
+"private_key"= "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDsn7mWcBgnwXMq\nCr+8BFvvsS1Ir19N784nlpg9stsmA5tIRDaTdmmNNzMkbpkhWbQsDT6MoCubWUnQ\nK0mX2AcAh3ofAp27/gvcpTQlJJuCXvUu5qIny7NsSoWg1swGwiaIEorY0yawu+Tw\nji7ZF6nsjTvzk1FtCaG3ZA4l1eOSUsmDMHo4dCQZMQmaw5Rp532sqPyrzFh+smA+\nd8u4S4NtnuFWwllMcZtR2m2XiJiQ4MO7HXF5OS2Fkhcjm1KoSI/GgU+EgRPUKbF+\n7ehclJZ2/veb47tdNhBRsCwrNjRFTM2s6pQAa3IlPlouOdCLndzP9OQdeoaOWvHR\nhvuXANhrAgMBAAECggEACeDhLpafa4l39Vldh8vmyqrq6Q3pPKe2Q5DV6j19SKj9\n4pZ2cNGQtoSHbg3v9qR4ER68bcKCD4o6uqYT/HLYV/1P69uAGkkQ1bVP5/0PQPIV\n6k9WlbK7WtoBmiVdfyq70RJ1GXg3NUmi1SgabJXAUk/TIOgVjifIyI80x/+V8JXP\npI8kvfL9pyNtXpxZ9awBJpL+tmk/FaRJHOWM27o0t2YrxeQvviMCZopV5Uv/Wc3k\neTynYwt8EboqQG6/2ZgBo3n999GVEbp8FBeuvaSraXOX5SD5SiMfA1F7p42Pum9W\n2SaaKYzB2u7WO9G9eZi8udqqwQiFMCyhUlcKX3NoAQKBgQD9v46sfPVe+7DPHcZW\n/hXpOz1dGPr9m23ITZ7hOmPVQN8U7hONgluuJOFZrHblorr1nIT3LMKwv3aDuggD\n5oUURBYhCDWE6TifoNWCVBd/2m6vweF1I4h6gptPmVDB6uNBTMNkCSs30danbsmc\nCVV7Ber86zA0sYn8sVeD1rFSKwKBgQDuuUQdWXYy83tQwPH1X0i1Iy8+4WsKJlIv\nCOz2WVBvJb4BLM21HaoWM0RD2+vWUTZvIvs5893eWDzjQ05qa7H2sTyjFok6xY53\nzUaK9jRhpCRdfdt/kldlTMoamgQ0OZBaLX21MP1KEvdO8ZfBq56e7UbaIATfRXEB\nMt1vqJCywQKBgQCSioYC50dtSz2Y30EkDCjrQOL3WO3aeGC2RN10hRwSlBxBIhz4\npEf+Eh5ygz9G7uu53GKNvLPTDz+KY20tk3tXcNq2yN7fmzCwP1oOojHQDH3P0tA5\nrgOrfLHlDk2tL9F+bK6KnyDuY6jrmPelvV44ZfqHheuZAs8FuAUqhlpxcQKBgFZJ\nEJ2rIFX6O7BMjSgrcJRIS2NnBtF8WGg3ya6hSbli4vJ5x0CXoEq17Q66BtxILmyt\nMDEaPC+JpThfs5AzrPeFyG0KUD+1+HDE+aJwqy4/rgU84IGT25L51nMXCD34MHzn\nxHAhbOvBPzKBkGCoL4UyLlHZEOnCp73PLMqXGvYBAoGBAL6wf0YkyfQXvBhq5wXa\nNYw1TYVhF1+1w3uGGlNNy4kWozMwKcJcvc95ulLRigDhUsSBq14IlypuHbaEH+Eu\nFcvi2n/1WBFSr/4R1bTuV++LKRllHslQdbK4aWORP2cKEclmirusgbQqSVoPQhI/\nfRr9JncK62Slda3v41JalIkP\n-----END PRIVATE KEY-----\n"
+"client_email"= "firebase-adminsdk-fbsvc@dragon-lab-ct.iam.gserviceaccount.com"
+"client_id"= "103737122865795610667"
+"auth_uri"= "https://accounts.google.com/o/oauth2/auth"
+"token_uri"= "https://oauth2.googleapis.com/token"
+"auth_provider_x509_cert_url"= "https://www.googleapis.com/oauth2/v1/certs"
+"client_x509_cert_url"= "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40dragon-lab-ct.iam.gserviceaccount.com"
+"universe_domain"= "googleapis.com"
