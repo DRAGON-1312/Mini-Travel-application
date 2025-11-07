@@ -26,6 +26,7 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 ```bash
 git clone https://github.com/DRAGON-1312/Mini-Travel-application.git
 cd "Mini-Travel-application/mini-travel app/SourceCode"
+python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -33,24 +34,24 @@ pip install -r requirements.txt
 
 ### macOS / Linux
 ```bash
-# If you run from SourceCode
-mkdir -p SourceCode/.streamlit
-cp SourceCode/temp.txt SourceCode/.streamlit/secrets.toml
+
+mkdir -p .streamlit
+cp temp.txt .streamlit/secrets.toml
 
 # If you run from repo root
 mkdir -p ./.streamlit
 cp SourceCode/temp.txt ./.streamlit/secrets.toml
 
 # then edit your keys
-nano SourceCode/.streamlit/secrets.toml   
+nano .streamlit/secrets.toml   
 ```
 
 ### Windows (PowerShell)
 ```bash
 # If you run from SourceCode
-mkdir SourceCode\.streamlit -Force
-Copy-Item SourceCode\temp.txt SourceCode\.streamlit\secrets.toml
-notepad SourceCode\.streamlit\secrets.toml
+mkdir .streamlit -Force
+Copy-Item temp.txt .streamlit\secrets.toml
+notepad .streamlit\secrets.toml
 
 # If you run from repo root
 mkdir .streamlit -Force
