@@ -7,12 +7,12 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 
 ## 🚀 Features
 
-**Two tabs**: Itinerary & Chat (Streamlit UI).
-**Form inputs**: origin, destination, dates, interests, pace.
-**Multi-backend LLM**: Ollama (default), OpenAI, Gemini; one model selector shared by both tabs.
-**Structured itinerary**: morning / afternoon / evening with short explanations; optional strict JSON (fallback to raw text).
-**Auth & history**: Firebase Email/Password + Firestore for chat & itinerary history.
-**Token control**: unlimited or max-tokens slider.
+* **Two tabs**: Itinerary & Chat (Streamlit UI).
+* **Form inputs**: origin, destination, dates, interests, pace.
+* **Multi-backend LLM**: Ollama (default), OpenAI, Gemini; one model selector shared by both tabs.
+* **Structured itinerary**: morning / afternoon / evening with short explanations; optional strict JSON (fallback to raw text).
+* **Auth & history**: Firebase Email/Password + Firestore for chat & itinerary history.
+* **Token control**: unlimited or max-tokens slider.
 
 ## 🧰 Requirements
 
