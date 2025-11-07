@@ -1,10 +1,12 @@
 # Mini-travel Application (Streamlit + Firebase + Ollama)
+
 * A simple mini-travel web app that lets users **log in, log out, chat, and generate a day-by-day itinerary** 
 (morning/afternoon/evening, short explanations) using an LLM.
 * Backends supported: **Ollama (default), OpenAI, and Gemini**. The UI is built with **Streamlit** and 
 authentication/history are stored in **Firebase** (Auth + Firestore).
 
 ## 🚀 Features
+
 **Two tabs**: Itinerary & Chat (Streamlit UI).
 **Form inputs**: origin, destination, dates, interests, pace.
 **Multi-backend LLM**: Ollama (default), OpenAI, Gemini; one model selector shared by both tabs.
@@ -13,6 +15,7 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 **Token control**: unlimited or max-tokens slider.
 
 ## 🧰 Requirements
+
 * Python 3.10+ (recommended: 3.11)
 * Pip + venv
 * Streamlit
@@ -22,16 +25,46 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 
 ```bash
 git clone https://github.com/DRAGON-1312/Mini-Travel-application.git
-cd SourceCode
+cd mini-travel app
 pip install -r requirements.txt
 ```
 
+## 🔐 Create `.streamlit/secrets.toml` from `temp.txt`
+
+### macOS / Linux
+
+# If you run from SourceCode
+mkdir -p SourceCode/.streamlit
+cp SourceCode/temp.txt SourceCode/.streamlit/secrets.toml
+
+# If you run from repo root
+mkdir -p ./.streamlit
+cp SourceCode/temp.txt ./.streamlit/secrets.toml
+
+# then edit your keys
+nano SourceCode/.streamlit/secrets.toml   
+
+### Windows (PowerShell)
+
+# If you run from SourceCode
+mkdir SourceCode\.streamlit -Force
+Copy-Item SourceCode\temp.txt SourceCode\.streamlit\secrets.toml
+notepad SourceCode\.streamlit\secrets.toml
+
+# If you run from repo root
+mkdir .streamlit -Force
+Copy-Item SourceCode\temp.txt .streamlit\secrets.toml
+notepad .streamlit\secrets.toml
+
 ## ▶️ Run
+
 ```bash
+cd SourceCode
 streamlit run app.py
 ```
 
 ## 🌐 Run on Colab/Kaggle (ngrok tunnel)
+
 * You must add a **Colab Secret** named `NGROK_AUTHTOKEN` to obtain a public URL for your local Ollama.
 **Step 1 — Add the secret in Colab**
 1. Click the **🔑 Secrets** panel in Colab.
