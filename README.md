@@ -25,13 +25,13 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 
 ```bash
 git clone https://github.com/DRAGON-1312/Mini-Travel-application.git
-cd mini-travel app
+cd "mini-travel app"
 pip install -r requirements.txt
 ```
 
 ## 🔐 Create `.streamlit/secrets.toml` from `temp.txt`
 
-### macOS / Linux
+## macOS / Linux
 
 # If you run from SourceCode
 mkdir -p SourceCode/.streamlit
@@ -44,7 +44,7 @@ cp SourceCode/temp.txt ./.streamlit/secrets.toml
 # then edit your keys
 nano SourceCode/.streamlit/secrets.toml   
 
-### Windows (PowerShell)
+## Windows (PowerShell)
 
 # If you run from SourceCode
 mkdir SourceCode\.streamlit -Force
@@ -65,10 +65,11 @@ streamlit run app.py
 
 ## 🌐 Run on Colab/Kaggle (ngrok tunnel)
 
-* You must add a **Colab Secret** named `NGROK_AUTHTOKEN` to obtain a public URL for your local Ollama.
+> You must add a **Colab Secret** named `NGROK_AUTHTOKEN` to obtain a public URL for your local Ollama.
+
 **Step 1 — Add the secret in Colab**
-1. Click the **🔑 Secrets** panel in Colab.
-2. Create a new key: **`NGROK_AUTHTOKEN`** with your token from dashboard.ngrok.com.
+1) Click the **🔑 Secrets** panel in Colab.
+2) Create a new key: **`NGROK_AUTHTOKEN`** (copy from dashboard.ngrok.com)
 
 **Step 2 — Start ngrok & get the public URL**
 
