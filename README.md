@@ -31,8 +31,8 @@ pip install -r requirements.txt
 
 ## 🔐 Create `.streamlit/secrets.toml` from `temp.txt`
 
-## macOS / Linux
-
+### macOS / Linux
+```bash
 # If you run from SourceCode
 mkdir -p SourceCode/.streamlit
 cp SourceCode/temp.txt SourceCode/.streamlit/secrets.toml
@@ -44,7 +44,7 @@ cp SourceCode/temp.txt ./.streamlit/secrets.toml
 # then edit your keys
 nano SourceCode/.streamlit/secrets.toml   
 
-## Windows (PowerShell)
+Windows (PowerShell)
 
 # If you run from SourceCode
 mkdir SourceCode\.streamlit -Force
@@ -55,6 +55,7 @@ notepad SourceCode\.streamlit\secrets.toml
 mkdir .streamlit -Force
 Copy-Item SourceCode\temp.txt .streamlit\secrets.toml
 notepad .streamlit\secrets.toml
+```
 
 ## ▶️ Run
 
