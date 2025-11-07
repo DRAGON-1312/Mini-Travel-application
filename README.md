@@ -25,9 +25,7 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 
 ```bash
 git clone https://github.com/DRAGON-1312/Mini-Travel-application.git
-cd Mini-Travel-application
-cd "mini-travel app"
-cd SourceCode
+cd "Mini-Travel-application/mini-travel app/SourceCode"
 pip install -r requirements.txt
 ```
 
