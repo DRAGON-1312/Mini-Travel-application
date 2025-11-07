@@ -25,7 +25,9 @@ authentication/history are stored in **Firebase** (Auth + Firestore).
 
 ```bash
 git clone https://github.com/DRAGON-1312/Mini-Travel-application.git
+cd Mini-Travel-application
 cd "mini-travel app"
+cd SourceCode
 pip install -r requirements.txt
 ```
 
@@ -75,7 +77,6 @@ OLLAMA_BASE = "<paste the NGROK URL here>"
 ## ▶️ Run
 
 ```bash
-cd SourceCode
 streamlit run app.py
 ```
 
