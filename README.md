@@ -43,9 +43,10 @@ cp SourceCode/temp.txt ./.streamlit/secrets.toml
 
 # then edit your keys
 nano SourceCode/.streamlit/secrets.toml   
+```
 
-Windows (PowerShell)
-
+### Windows (PowerShell)
+```bash
 # If you run from SourceCode
 mkdir SourceCode\.streamlit -Force
 Copy-Item SourceCode\temp.txt SourceCode\.streamlit\secrets.toml
@@ -55,13 +56,6 @@ notepad SourceCode\.streamlit\secrets.toml
 mkdir .streamlit -Force
 Copy-Item SourceCode\temp.txt .streamlit\secrets.toml
 notepad .streamlit\secrets.toml
-```
-
-## ▶️ Run
-
-```bash
-cd SourceCode
-streamlit run app.py
 ```
 
 ## 🌐 Run on Colab/Kaggle (ngrok tunnel)
@@ -77,6 +71,13 @@ streamlit run app.py
 **Step 3 — Point the app to this URL**
 * Edit ./.streamlit/secrets.toml:
 OLLAMA_BASE = "<paste the NGROK URL here>"
+
+## ▶️ Run
+
+```bash
+cd SourceCode
+streamlit run app.py
+```
 
 ## 🛠️ Customization
 
