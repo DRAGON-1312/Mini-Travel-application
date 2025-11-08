@@ -84,59 +84,61 @@ streamlit run app.py
 Edit `secrets.toml` to:
 * Select backend (enable one of the three - ollama, openai, gemini)
 * firebase (firebase_client & firebase_admin)
+* UI Theme (THEME_BG)
 
 Edit `app.py` to:
 
 1) **Endpoint & defaults**
-* BASE: Line 24-30.
+* BASE (Ollama endpoint selector block): Line 24-30.
 * DEFAULT_MODEL: Line 32.
 * DEFAULT_TIMEOUT: Line 33.
 * DEFAULT_NUM_PREDICT: Line 34.
 
 2) **UI & layout**
 *Page config (title, icon, layout): Line 17-21.
-* Want to hide or customize the message when Ollama is not reachable: Line 486-491.
-* Main heading: Line 495.
-* Tab names: Line 500.
-* Form fields (Itinerary tab): Line 506-513.
-* Model selector (shared for Chat): Line 516-517.
-* "Return JSON" checkbox: Line 518.
-* Token control (Unlimited & slider): Line 536-544. 
-    (Note: EOS below (L546)).
-* Itinerary renderer (text): Line 426-428.
-* Itinerary renderer (JSON): Line 431-447.
-* Display itinerary history (local panel): Line 624-639.
-* Render chat history: Line 372-373.
+* Want to hide or customize the message when Ollama is not reachable: Line 550-555.
+* Main heading: Line 559-560 (inject_travel_theme() - Line 49-84 & hero_header() - Line 87-107).
+* Tab names: Line 565.
+* Form fields (Itinerary tab): Line 571-578.
+* Model selector (shared for Chat): Line 581-582.
+* "Return JSON" checkbox: Line 583.
+* Schedule creation button: Line 598
+* Token control (Unlimited & slider): Line 600-609. 
+    (Note: EOS below (Line 611)).
+* Itinerary renderer (text): Line 489-491.
+* Itinerary renderer (JSON): Line 494-511.
+* Display itinerary history (local panel): Line 689-704.
+* Render chat history: Line 432-436.
 
 3) **Chat persona, greeting, temperature**
-* Primer for Chat: Line 392-395.
-* Default Greeting: Line 319 (Load history after login), Line 465-467 (Initialize session for the first time), Line 650-652 (after logout)
-* Temperature, num_predict for Chat: Line 408, 409.
+* Primer for Chat: Line 455-459.
+* Default Greeting: Line 381 (Load history after login), Line 530 (Initialize session for the first time), Line 716 (after logout)
+* Temperature, num_predict for Chat: Line 471-472.
 
 4) **Backends & AI integration**
 * Select backend + configure key: Line 37-46.
-* Ping Ollama / model list from /api/tags: Line 52-72.
-* Ollama wrapper: Line 75-126.
-* OpenAI wrapper: Line 134-162.
-* Gemini wrapper: Line 165-192.
-* Dispatcher: Line 195-212.
-* Model list by backend (populate into dropdown): Line 216-223.
+* Ping Ollama / model list from /api/tags: Line 114-134.
+* Ollama wrapper: Line 137-188.
+* OpenAI wrapper: Line 196-224.
+* Gemini wrapper: Line 227-254.
+* Dispatcher: Line 257-274.
+* Model list by backend (populate into dropdown): Line 278-285.
 
 5) **Authorization & data storage**
-* Require login to use Chat: Line 359-361.
-* Form sign in: Line 290-325.
-* Form sign up: Line 328-354.
-* Firebase init (Auth + Firestore): Line 227-244.
-* Save chat history (Firestore): Line 248-250.
-* Read chat history (Firestore): Line 253-267.
-* Save itinerary history (Firestore): Line 270-277.
-* Read itinerary history (Firestore): Line 279-287.
-* Save itinerary history to session (retain up to 5 entries): Line 611-617.
+* Require login to use Chat: Line 421-423.
+* Form sign in: Line 352-387.
+* Form sign up: Line 390-416.
+* Firebase init (Auth + Firestore): Line 289-306.
+* Save chat history (Firestore): Line 310-312.
+* Read chat history (Firestore): Line 315-329.
+* Save itinerary history (Firestore): Line 332-339.
+* Read itinerary history (Firestore): Line 341-349.
+* Save itinerary history to session (retain up to 5 entries): Line 676-682.
 
 6) **Itinerary generation prompt & validation**
-* Prompt JSON (Itinerary): Line 560-570
-* Text-based prompt: Line 571-576
-* User message: Line 579-584
-* Validate date: Line 552-554 
+* Validate date: Line 617-619 
+* Prompt JSON (Itinerary): Line 625-635
+* Text-based prompt: Line 636-641
+* User message: Line 644-649
 
-7) **Historical time format (Line 449-459)**
+7) **Historical time format (Line 513-523)**
