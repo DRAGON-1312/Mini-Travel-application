@@ -15,9 +15,9 @@ from firebase_admin import credentials, firestore
 
 # Page & global configuration
 st.set_page_config(
-    page_title="Mini-travel (Streamlit + Firebase + Ollama)",
+    page_title="Journey Spark",
     page_icon="🧭",
-    layout="centered",
+    layout="wide",
 )
 
 # Ollama HTTP endpoint (ưu tiên BASE https)
@@ -44,6 +44,68 @@ OPENAI_MODEL = st.secrets.get("OPENAI_MODEL") or os.getenv("OPENAI_MODEL", "gpt-
 # Gemini
 GEMINI_API_KEY = st.secrets.get("GOOGLE_API_KEY") or os.getenv("GOOGLE_API_KEY")
 GEMINI_MODEL = st.secrets.get("GEMINI_MODEL") or os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+
+# UI THEME (background + glass cards)
+def inject_travel_theme():
+    # Cho phép đặt ảnh nền qua secrets/env: THEME_BG="https://..."
+    bg_url = st.secrets.get("THEME_BG") or os.getenv("THEME_BG")
+    if bg_url:
+        bg_css = f"background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)), url('{bg_url}') center/cover fixed no-repeat;"
+    else:
+        # Fallback: gradient dịu mắt nếu chưa có ảnh
+        bg_css = "background: linear-gradient(135deg, #f6f9ff 0%, #fff4e6 100%);"
+
+    st.markdown(f"""
+    <style>
+      .stApp {{ {bg_css} }}
+      /* Glass card */
+      .glass {{
+        background: rgba(255,255,255,0.86);
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        backdrop-filter: blur(8px);
+        padding: 20px;
+      }}
+      /* Pills nhỏ hiển thị trạng thái */
+      .pill {{
+        display:inline-block; padding:6px 10px; border-radius:999px;
+        background: rgba(255,255,255,0.75); border:1px solid rgba(0,0,0,0.08);
+        margin-right:6px; font-size:13px;
+      }}
+      /* Tiêu đề brand */
+      .brand h1 {{
+        font-size: 40px; line-height: 1.1; margin: 0;
+      }}
+      .brand .tagline {{
+        opacity: .9; margin-top: 4px;
+      }}
+    </style>
+    """, unsafe_allow_html=True)
+    
+
+def hero_header():
+    # Ping nhanh trạng thái Ollama (nếu dùng)
+    online = True
+    if BACKEND == "ollama":
+        ok, _ = ping_ollama(BASE)
+        online = bool(ok)
+
+    model_name = st.session_state.get("chat_model", DEFAULT_MODEL)
+    status = "✅ Online" if online else "⚠️ Offline"
+
+    st.markdown("""
+    <div class="glass brand" style="margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+        <div style="font-size:44px">🧭🔥</div>
+        <div>
+        <h1>Journey Spark</h1>
+        <div class="tagline">Thắp cảm hứng cho từng hành trình — Spark your next trip</div>
+        </div>
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 # Session HTTP dùng lại kết nối
 _http = requests.Session()
@@ -369,7 +431,8 @@ def chat_dialog():
     body.empty()
     with body:
         for m in list(st.session_state.messages):
-            with st.chat_message(m["role"]):
+            avatar = "🧭" if m["role"] == "assistant" else "🧑‍💻"
+            with st.chat_message(m["role"], avatar=avatar):
                 st.markdown(m["content"])
 
     user_input = st.chat_input("Enter message...")
@@ -382,11 +445,11 @@ def chat_dialog():
     save_message(st.session_state.user["uid"], "user", user_input)
 
     with body:
-        with st.chat_message("user"):
+        with st.chat_message("user", avatar="🧑‍💻"):
             st.markdown(user_input)
 
         # Gọi model và hiển thị reply
-        with st.chat_message("assistant"):
+        with st.chat_message("assistant", avatar="🧭"):
             with st.spinner("Mika is typing a response..."):
                 try:
                     primer = {
@@ -434,10 +497,11 @@ def render_itinerary_json(obj: Dict[str, Any]):
     for i, day in enumerate(days, 1):
         label = day.get("date") or f"Day {i}"
         st.markdown(f"### 📅 {label}")
+        icons = {"morning": "🌤️", "afternoon": "🌇", "evening": "🌙"}
         for block in ["morning", "afternoon", "evening"]:
             items = day.get(block) or []
             if items:
-                st.markdown(f"**{block.capitalize()}**")
+                st.markdown(f"**{icons.get(block,'')} {block.capitalize()}**")
                 for it in items:
                     if isinstance(it, str):
                         st.markdown(f"- {it}")
@@ -492,23 +556,24 @@ if BACKEND == "ollama":
 
 
 # Main UI
-st.markdown("<h1 style='text-align:center;'>Streamlit Chat + Firebase Login</h1>", unsafe_allow_html=True)
+inject_travel_theme()
+hero_header()
 
 if st.session_state.user:
     st.success(f"Logged in as {st.session_state.user['email']}")
 
-    tab_itin, tab_chat = st.tabs(["Itinerary", "Chat"])
+    tab_itin, tab_chat = st.tabs(["🗺️ Itinerary", "💬 Chat"])
 
     # TAB ITINERARY
     with tab_itin:
         with st.form("plan_form"):
             c1, c2 = st.columns(2)
             with c1:
-                origin = st.text_input("Origin city", "Ho Chi Minh City")
+                origin = st.text_input("🏠 Origin", "Ho Chi Minh City")
                 start = st.date_input("Start date", date.today())
                 interests = st.multiselect("Interests", ["food", "museums", "nature", "nightlife"], default=["food", "nature"])
             with c2:
-                dest = st.text_input("Destination city", "Da Nang")
+                dest = st.text_input("📍 Destination", "Da Nang")
                 end = st.date_input("End date", date.today() + timedelta(days=2))
                 pace = st.selectbox("Pace", ["relaxed", "normal", "tight"], index=0)
 
@@ -530,7 +595,7 @@ if st.session_state.user:
             elif BACKEND == "gemini" and not GEMINI_API_KEY:
                 backend_ready = False
                 st.error("BACKEND=gemini but missing GOOGLE_API_KEY (GEMINI_API_KEY) in secrets/env.")
-            submitted = st.form_submit_button("Generate itinerary")
+            submitted = st.form_submit_button("🔥 Generate Itinerary")
 
         with st.expander("⚙️ Advanced options", expanded=False):
             limitless = st.checkbox("Unlimited tokens", key="no_cap")
