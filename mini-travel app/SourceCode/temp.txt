@@ -14,6 +14,8 @@
 # GOOGLE_API_KEY = ""
 # GEMINI_MODEL = "gemini-1.5-flash"
 
+THEME_BG = ""
+
 [firebase_client]
 "apiKey"= "AIzaSyDwMzbNhFQVGJMzt4mDo7kZbdFNoC32dr4"
 "authDomain"= "dragon-lab-ct.firebaseapp.com"
